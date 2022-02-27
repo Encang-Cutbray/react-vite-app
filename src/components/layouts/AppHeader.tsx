@@ -16,8 +16,8 @@ function AppHeader() {
 				px={4}
 			>
 				<Image
-					w="25px"
-					h="25px"
+					w={6}
+					h={6}
 					src={AppIcon.AppLogo}
 					alt="App Logo"
 					flex={1}
