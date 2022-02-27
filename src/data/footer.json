@@ -1,0 +1,7 @@
+{
+	"data": [
+		{ "name": "beranda", "icon": "MdOutlineHome" },
+		{ "name": "cicilan aktif", "icon": "MdOutlineOutbox" },
+		{ "name": "akun", "icon": "MdPersonOutline" }
+	]
+}

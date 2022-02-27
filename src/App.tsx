@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { AppFooter, AppHeader, AppLayout } from "./components/layouts";
+import { Box, Text, Image } from "@chakra-ui/react";
+import Logo from "./styles/favicon.svg";
 
-import { Box } from "@chakra-ui/react";
+import footerJson from "./data/footer.json";
 
-// 425px
 function App() {
-	const [count, setCount] = useState(0);
-
 	return (
-		<Box bg="gray.200" maxW="full" minH="100vh" display="flex" justifyContent="center">
-			<Box bg="gray.500" maxW="425px" width="100%">{count}</Box>
-		</Box>
+		<AppLayout>
+			<AppHeader />
+			<Box h="1000px" bg="gray.100" pt={16}>
+				Hello
+				<Image w="25px" h="25px" src={Logo} alt="App Logo" />
+				<Text mt="800px">KOPIU</Text>
+			</Box>
+			<AppFooter footerMenu={footerJson.data} />
+		</AppLayout>
 	);
 }
 

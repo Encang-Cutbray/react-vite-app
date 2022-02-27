@@ -1,6 +1,9 @@
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme, IconProps } from "@chakra-ui/react";
 
 import { createBreakpoints } from "@chakra-ui/theme-tools";
+
+import "@fontsource/poppins";
+import { IconType } from "react-icons";
 
 const theme = extendTheme({
 	breakpoints: createBreakpoints({
@@ -17,3 +20,19 @@ const theme = extendTheme({
 });
 
 export default theme;
+
+import {
+	MdOutlineHome,
+	MdOutlineOutbox,
+	MdPersonOutline,
+} from "react-icons/md";
+
+export type AppIcon = {
+	[key: string]: IconType;
+};
+
+export const appIcon = {
+	MdOutlineHome,
+	MdOutlineOutbox,
+	MdPersonOutline,
+} as AppIcon;
