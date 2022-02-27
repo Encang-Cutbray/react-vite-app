@@ -1,6 +1,5 @@
-import { Box, Icon, Avatar, AvatarBadge, Image } from "@chakra-ui/react";
-
 import AppIcon from "../../theme/app-icon";
+import { Box, Icon, Avatar, AvatarBadge, Image } from "@chakra-ui/react";
 
 function AppHeader() {
 	return (
@@ -15,14 +14,17 @@ function AppHeader() {
 				py={3}
 				px={4}
 			>
-				<Image
-					w={6}
-					h={6}
-					src={AppIcon.AppLogo}
-					alt="App Logo"
-					flex={1}
-					cursor="pointer"
-				/>
+				<Box flex={1}>
+					<Box display="flex" justifyContent="center">
+						<Image
+							w={6}
+							h={6}
+							src={AppIcon.AppLogo}
+							alt="App Logo"
+							cursor="pointer"
+						/>
+					</Box>
+				</Box>
 
 				<Box alignSelf="center">
 					<Avatar
