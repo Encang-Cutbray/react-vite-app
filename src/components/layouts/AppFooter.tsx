@@ -18,7 +18,7 @@ function AppFooter({ footerMenu }: AppFooterProps) {
 	let navigate = useNavigate();
 	let location = useLocation();
 	const onClickNav = (url: string) => {
-		navigate(url, { replace: true });
+		navigate(url);
 	};
 
 	return (
