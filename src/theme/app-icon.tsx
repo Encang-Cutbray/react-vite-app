@@ -3,7 +3,7 @@ import {
 	MdOutlineOutbox,
 	MdPersonOutline,
 	MdNotifications,
-} from "react-icons/all";
+} from "react-icons/md";
 
 import AppLogo from "../styles/favicon.svg";
 
