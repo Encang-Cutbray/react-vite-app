@@ -2,7 +2,7 @@ import AppWrapper from "../AppWrapper";
 
 import AppIcon from "../../theme/app-icon";
 
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { Box, Icon, Text } from "@chakra-ui/react";
 
@@ -16,6 +16,8 @@ type AppFooterProps = {
 
 function AppFooter({ footerMenu }: AppFooterProps) {
 	let navigate = useNavigate();
+	let location = useLocation();
+	console.log(location.pathname);
 
 	const onClickNav = (url: string) => {
 		navigate(url, { replace: true });
@@ -42,14 +44,23 @@ function AppFooter({ footerMenu }: AppFooterProps) {
 							cursor="pointer"
 						>
 							<Text
-								fontSize="xs"
+								fontSize="xx-small"
 								textTransform="capitalize"
-								color="blue.500"
+								style={
+									location.pathname == url
+										? { color: "blue.800", fontWeight : "bold"}
+										: { color: "blue.500", fontWeight : "normal"}
+								}
+								
 							>
 								{name}
 							</Text>
 							<Icon
-								color="blue.500"
+								color={
+									location.pathname == url
+										? "blue.800"
+										: "blue.500"
+								}
 								as={AppIcon[icon] as any}
 								w={6}
 								h={6}
