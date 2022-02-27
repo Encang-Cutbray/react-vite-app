@@ -1,5 +1,5 @@
-
 import { Box, Text } from "@chakra-ui/react";
+import AppAnimate from "../components/AppAnimate";
 
 import { AppHeaderSecondary, AppLayout } from "../components/layouts";
 
@@ -8,9 +8,17 @@ function NotFound() {
 	return (
 		<AppLayout>
 			<AppHeaderSecondary title={pageTitle} />
-			<Box pt={16}>
-				<Text textAlign="center" fontSize="lg" textTransform="capitalize">Page {pageTitle}</Text>
-			</Box>
+			<AppAnimate>
+				<Box pt={16}>
+					<Text
+						textAlign="center"
+						fontSize="lg"
+						textTransform="capitalize"
+					>
+						Page {pageTitle}
+					</Text>
+				</Box>
+			</AppAnimate>
 		</AppLayout>
 	);
 }
