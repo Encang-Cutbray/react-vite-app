@@ -6,15 +6,20 @@ import { useNavigate } from "react-router-dom";
 
 import { navTop } from "../../state/menu-context";
 
-import { Box, Icon, Avatar, AvatarBadge, Image } from "@chakra-ui/react";
+import { Box, Icon, Avatar, Text } from "@chakra-ui/react";
 
-function AppHeader() {
-	const { 0: berandaMenu, 1: notificationMenu } = navTop;
+type AppHeaderSecondaryProps = {
+	title?: string;
+};
+
+function AppHeaderSecondary({ title }: AppHeaderSecondaryProps) {
+	const { 0: berandaMenu } = navTop;
 
 	let navigate = useNavigate();
 
 	const onClickNav = (url: string) => {
-		navigate(url);
+		// navigate("-1", { replace: true });
+		navigate(url, { replace: true });
 	};
 
 	return (
@@ -29,39 +34,25 @@ function AppHeader() {
 					py={3}
 					px={4}
 				>
-					<Box flex={1}>
-						<Box display="flex" justifyContent="center">
-							<Image
-								onClick={() => onClickNav(berandaMenu.url)}
-								w={6}
-								h={6}
-								src={AppIcon.AppLogo}
-								alt="App Logo"
-								cursor="pointer"
-							/>
-						</Box>
-					</Box>
 					<Box alignSelf="center">
 						<Avatar
 							cursor="pointer"
-							onClick={() => onClickNav(notificationMenu.url)}
+							onClick={() => onClickNav(berandaMenu.url)}
 							w={6}
 							h={6}
 							bg="transparent"
 							icon={
 								<Icon
-									color="blue.500"
-									as={AppIcon.MdNotifications}
-									boxSize="inherit"
+									color="black"
+									as={AppIcon.MdArrowBack}
+									w="inherit"
+									h="inherit"
 								/>
 							}
-						>
-							<AvatarBadge
-								boxSize="0.8em"
-								top={-2}
-								bg="red.500"
-							/>
-						</Avatar>
+						></Avatar>
+					</Box>
+					<Box flex={1}>
+						<Text textAlign="center" textTransform="capitalize" letterSpacing={2} fontSize="md">{title ?? "Title"}</Text>
 					</Box>
 				</Box>
 			</Box>
@@ -69,4 +60,4 @@ function AppHeader() {
 	);
 }
 
-export default AppHeader;
+export default AppHeaderSecondary;

@@ -1,19 +1,32 @@
-import { AppFooter, AppHeader, AppLayout } from "./components/layouts";
-import { Box, Text, Image } from "@chakra-ui/react";
-import Logo from "./styles/favicon.svg";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-import footerJson from "./data/footer.json";
+import { Box, Text, Image, Button, Link } from "@chakra-ui/react";
+import { AppFooter, AppHeader, AppLayout } from "./components/layouts";
+
+import FooterMenuContext from "./state/menu-context";
 
 function App() {
+	let navigate = useNavigate();
+	const footerMenu = useContext(FooterMenuContext);
+
 	return (
 		<AppLayout>
 			<AppHeader />
 			<Box h="1000px" bg="gray.100" pt={16}>
-				Hello
-				<Image w="25px" h="25px" src={Logo} alt="App Logo" />
+				<Text>Beranda</Text>
+				{footerMenu.map((nav) => (
+					<Link
+						ml={2}
+						key={nav.name}
+						onClick={() => navigate(`account`)}
+					>
+						{nav.name}
+					</Link>
+				))}
 				<Text mt="800px">KOPIU</Text>
 			</Box>
-			<AppFooter footerMenu={footerJson.data} />
+			<AppFooter footerMenu={footerMenu} />
 		</AppLayout>
 	);
 }

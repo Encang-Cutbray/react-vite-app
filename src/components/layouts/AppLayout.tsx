@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 import { Box } from "@chakra-ui/react";
+import AppWrapper from "../AppWrapper";
 
 type AppLayoutProps = {
 	children?: ReactNode;
@@ -15,9 +16,7 @@ function AppLayout({ children }: AppLayoutProps) {
 			display="flex"
 			justifyContent="center"
 		>
-			<Box bg="white" width="100%" maxW="425px">
-				{children}
-			</Box>
+			<AppWrapper>{children}</AppWrapper>
 		</Box>
 	);
 }

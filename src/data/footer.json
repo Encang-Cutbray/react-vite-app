@@ -1,7 +1,25 @@
 {
-	"data": [
-		{ "name": "beranda", "icon": "MdOutlineHome" },
-		{ "name": "cicilan aktif", "icon": "MdOutlineOutbox" },
-		{ "name": "akun", "icon": "MdPersonOutline" }
-	]
+	"menu": {
+		"top": [
+			{ "url": "/", "name": "beranda", "icon": "MdOutlineHome" },
+			{
+				"url": "/notification",
+				"name": "notification",
+				"icon": "MdNotifications"
+			}
+		],
+		"bottom": [
+			{ "url": "/", "name": "beranda", "icon": "MdOutlineHome" },
+			{
+				"url": "/interest",
+				"name": "cicilan aktif",
+				"icon": "MdOutlineOutbox"
+			},
+			{
+				"url": "/account",
+				"name": "akun",
+				"icon": "MdPersonOutline"
+			}
+		]
+	}
 }

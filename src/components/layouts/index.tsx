@@ -1,5 +1,6 @@
 import AppLayout from "./AppLayout";
-import AppHeader from "./AppHeader";
 import AppFooter from "./AppFooter";
+import AppHeader from "./AppHeader";
+import AppHeaderSecondary from "./AppHeaderSecondary";
 
-export { AppLayout, AppHeader, AppFooter };
+export { AppLayout, AppHeader, AppHeaderSecondary, AppFooter };
