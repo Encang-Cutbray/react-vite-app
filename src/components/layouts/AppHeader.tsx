@@ -20,7 +20,7 @@ function AppHeader() {
 
 	return (
 		<AppWrapper>
-			<Box position="fixed" w="inherit" maxW="inherit" bg="white">
+			<Box position="fixed" w="inherit" maxW="inherit" bg="white" zIndex={1}>
 				<Box
 					display="flex"
 					justifyContent="space-between"

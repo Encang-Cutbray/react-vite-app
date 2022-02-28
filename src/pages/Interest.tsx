@@ -13,8 +13,8 @@ function Interest() {
 		<AppLayout>
 			<AppHeader />
 			<AppAnimate>
-				<Box h="1000px" bg="gray.100" pt={16}>
-					<Text>Interest</Text>
+				<Box minH="100vh" h="full" bg="gray.100" pt={16}>
+					<Text textAlign="center">Interest</Text>
 				</Box>
 			</AppAnimate>
 

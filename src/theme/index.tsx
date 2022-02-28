@@ -20,19 +20,3 @@ const theme = extendTheme({
 });
 
 export default theme;
-
-import {
-	MdOutlineHome,
-	MdOutlineOutbox,
-	MdPersonOutline,
-} from "react-icons/md";
-
-export type AppIcon = {
-	[key: string]: IconType;
-};
-
-export const appIcon = {
-	MdOutlineHome,
-	MdOutlineOutbox,
-	MdPersonOutline,
-} as AppIcon;

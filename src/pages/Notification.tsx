@@ -9,9 +9,10 @@ function Notification() {
 		<AppLayout>
 			<AppHeaderSecondary title={pageTitle} />
 			<AppAnimate>
-				<Box h="1000px" bg="gray.100" pt={16}>
-					<Text>Notification</Text>
+				<Box minH="100vh" h="full" bg="gray.100" pt={16}>
+					<Text textAlign="center">Notification</Text>
 				</Box>
+				
 			</AppAnimate>
 		</AppLayout>
 	);
