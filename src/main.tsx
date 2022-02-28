@@ -11,6 +11,7 @@ import { MenuProvider } from "./state/menu-context";
 import { AuthProvider } from "./state/auth-context";
 
 import { Account, Interest, NotFound, Notification, Login } from "./pages";
+import AuthWrapper from "./components/AuthWrapper";
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -19,13 +20,15 @@ ReactDOM.render(
 				<AuthProvider>
 					<BrowserRouter>
 						<Routes>
-							<Route path="/" element={<App />} />
-							<Route path="account" element={<Account />} />
-							<Route path="interest" element={<Interest />} />
-							<Route
-								path="notification"
-								element={<Notification />}
-							/>
+							<Route element={<AuthWrapper />}>
+								<Route path="/" element={<App />} />
+								<Route path="account" element={<Account />} />
+								<Route path="interest" element={<Interest />} />
+								<Route
+									path="notification"
+									element={<Notification />}
+								/>
+							</Route>
 							<Route path="/login" element={<Login />} />
 							<Route path="*" element={<NotFound />} />
 						</Routes>

@@ -1,22 +1,56 @@
 import { Box, Text } from "@chakra-ui/react";
-import { useContext } from "react";
-import AppAnimate from "../components/AppAnimate";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { AppFooter, AppHeader, AppLayout } from "../components/layouts";
-import MenuContext, { AppMenuType } from "../state/menu-context";
+import AppLogo from "../components/AppLogo";
+import AppAnimate from "../components/AppAnimate";
+import { AppHeaderSecondary, AppLayout } from "../components/layouts";
+
+import { useAuth } from "../hooks";
 
 function Login() {
-	const { menus } = useContext<AppMenuType>(MenuContext);
+	let navigate = useNavigate();
+	let location = useLocation();
+	let auth = useAuth();
+
+	let from : any = location.state?.from?.pathname || "/";
+	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+
+		let formData = new FormData(event.currentTarget);
+		let username = formData.get("username") as string;
+
+		auth.signin(username, () => {
+			navigate(from, { replace: true });
+		});
+	}
+	/**
+	 * <div>
+      <p>You must log in to view the page at {from}</p>
+
+      <form onSubmit={handleSubmit}>
+        <label>
+          Username: <input name="username" type="text" />
+        </label>{" "}
+        <button type="submit">Login</button>
+      </form>
+    </div>
+	 */
 	return (
 		<AppLayout>
-			<AppHeader />
+			<AppHeaderSecondary title="Login" logo={<AppLogo />} />
 			<AppAnimate>
-				<Box h="1000px" bg="gray.100" pt={16}>
-					<Text>Login</Text>
+				<Box minH="100vh" h="100%" bg="gray.100" pt={16}>
+					<Text textAlign="center">
+						You must log in to view the page at {from}
+					</Text>
+					<form onSubmit={handleSubmit}>
+						<label>
+							Username: <input name="username" type="text" />
+						</label>{" "}
+						<button type="submit">Login</button>
+					</form>
 				</Box>
 			</AppAnimate>
-
-			<AppFooter footerMenu={menus.bottom} />
 		</AppLayout>
 	);
 }

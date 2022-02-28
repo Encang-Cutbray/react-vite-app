@@ -12,18 +12,15 @@ export type AppMenuType = {
 		bottom: MenuType[];
 	};
 };
-
-const { menus: { top: navTop } } = menus;
-
 const MenuContext = React.createContext<AppMenuType>(null!);
-
 export default MenuContext;
 
+const appMenu = menus;
+
 const MenuProvider = ({ children }: { children: React.ReactNode }) => {
-	const appMenu = menus;
 	return (
 		<MenuContext.Provider value={appMenu}>{children}</MenuContext.Provider>
 	);
 };
 
-export { navTop, MenuProvider };
+export { MenuProvider };

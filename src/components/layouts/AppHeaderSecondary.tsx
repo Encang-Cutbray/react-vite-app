@@ -1,24 +1,25 @@
+import { ReactNode, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { Box, Icon, Avatar, Text, Image } from "@chakra-ui/react";
+
 import AppWrapper from "../AppWrapper";
 
 import AppIcon from "../../theme/app-icon";
 
-import { useNavigate } from "react-router-dom";
-
-import { navTop } from "../../state/menu-context";
-
-import { Box, Icon, Avatar, Text } from "@chakra-ui/react";
+import MenuContext, { AppMenuType } from "../../state/menu-context";
 
 type AppHeaderSecondaryProps = {
 	title?: string;
+	logo?: ReactNode;
 };
 
-function AppHeaderSecondary({ title }: AppHeaderSecondaryProps) {
-	const { 0: berandaMenu } = navTop;
+function AppHeaderSecondary({ title, logo }: AppHeaderSecondaryProps) {
+	const { menus } = useContext<AppMenuType>(MenuContext);
+	const { 0: berandaMenu, ...rest } = menus.top;
 
 	let navigate = useNavigate();
 
 	const onClickNav = (url: string) => {
-		// navigate("-1", { replace: true });
 		navigate(url, { replace: true });
 	};
 
@@ -35,24 +36,35 @@ function AppHeaderSecondary({ title }: AppHeaderSecondaryProps) {
 					px={4}
 				>
 					<Box alignSelf="center">
-						<Avatar
-							cursor="pointer"
-							onClick={() => onClickNav(berandaMenu.url)}
-							w={6}
-							h={6}
-							bg="transparent"
-							icon={
-								<Icon
-									color="black"
-									as={AppIcon.MdArrowBack}
-									w="inherit"
-									h="inherit"
-								/>
-							}
-						></Avatar>
+						{logo ? (
+							logo
+						) : (
+							<Avatar
+								cursor="pointer"
+								onClick={() => onClickNav(berandaMenu.url)}
+								w={6}
+								h={6}
+								bg="transparent"
+								icon={
+									<Icon
+										color="black"
+										as={AppIcon.MdArrowBack}
+										w="inherit"
+										h="inherit"
+									/>
+								}
+							></Avatar>
+						)}
 					</Box>
 					<Box flex={1}>
-						<Text textAlign="center" textTransform="capitalize" letterSpacing={2} fontSize="md">{title ?? "Title"}</Text>
+						<Text
+							textAlign="center"
+							textTransform="capitalize"
+							letterSpacing={2}
+							fontSize="md"
+						>
+							{title ?? "Title"}
+						</Text>
 					</Box>
 				</Box>
 			</Box>

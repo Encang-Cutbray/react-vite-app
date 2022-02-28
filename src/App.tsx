@@ -7,6 +7,7 @@ import AppAnimate from "./components/AppAnimate";
 import { AppFooter, AppHeader, AppLayout } from "./components/layouts";
 
 import MenuContext, { AppMenuType } from "./state/menu-context";
+import AuthWrapper from "./components/AuthWrapper";
 
 function App() {
 	const { menus } = useContext<AppMenuType>(MenuContext);

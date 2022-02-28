@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Icon, Avatar, AvatarBadge, Image } from "@chakra-ui/react";
 
+import AppLogo from "../AppLogo";
 import AppWrapper from "../AppWrapper";
 
 import AppIcon from "../../theme/app-icon";
@@ -31,13 +32,9 @@ function AppHeader() {
 				>
 					<Box flex={1}>
 						<Box display="flex" justifyContent="center">
-							<Image
+							<AppLogo
 								onClick={() => onClickNav(berandaMenu.url)}
-								w={6}
-								h={6}
 								src={AppIcon.AppLogo}
-								alt="App Logo"
-								cursor="pointer"
 							/>
 						</Box>
 					</Box>
