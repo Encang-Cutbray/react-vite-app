@@ -12,7 +12,8 @@ function Login() {
 	let location = useLocation();
 	let auth = useAuth();
 
-	let from : any = location.state?.from?.pathname || "/";
+	// let from: any = location.state?.from?.pathname || "/";	
+	let from = "/";
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 
@@ -23,23 +24,12 @@ function Login() {
 			navigate(from, { replace: true });
 		});
 	}
-	/**
-	 * <div>
-      <p>You must log in to view the page at {from}</p>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username: <input name="username" type="text" />
-        </label>{" "}
-        <button type="submit">Login</button>
-      </form>
-    </div>
-	 */
 	return (
 		<AppLayout>
 			<AppHeaderSecondary title="Login" logo={<AppLogo />} />
 			<AppAnimate>
-				<Box minH="100vh" h="100%" bg="gray.100" pt={16}>
+				<Box minH="100vh" h="full" bg="gray.100" pt={16}>
 					<Text textAlign="center">
 						You must log in to view the page at {from}
 					</Text>

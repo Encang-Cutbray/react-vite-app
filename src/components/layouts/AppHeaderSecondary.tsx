@@ -53,7 +53,7 @@ function AppHeaderSecondary({ title, logo }: AppHeaderSecondaryProps) {
 										h="inherit"
 									/>
 								}
-							></Avatar>
+							/>
 						)}
 					</Box>
 					<Box flex={1}>
