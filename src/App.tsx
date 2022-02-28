@@ -1,9 +1,9 @@
 import { useContext } from "react";
 
 import { Box, Text } from "@chakra-ui/react";
-import { AppFooter, AppHeader, AppLayout } from "./components/layouts";
 import menuContext from "./state/menu-context";
 import AppAnimate from "./components/AppAnimate";
+import { AppFooter, AppHeader, AppLayout } from "./components/layouts";
 
 
 function App() {
