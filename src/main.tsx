@@ -6,25 +6,32 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import App from "./App";
 import theme from "./theme";
-import { Account, Interest, NotFound, Notification } from "./pages";
 
-import MenuContext, { navFooter } from "./state/menu-context";
+import { MenuProvider } from "./state/menu-context";
+import { AuthProvider } from "./state/auth-context";
 
+import { Account, Interest, NotFound, Notification, Login } from "./pages";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<ChakraProvider resetCSS theme={theme}>
-			<MenuContext.Provider value={navFooter}>
-				<BrowserRouter>
-					<Routes>
-						<Route path="/" element={<App />} />
-						<Route path="account" element={<Account />} />
-						<Route path="interest" element={<Interest />} />
-						<Route path="notification" element={<Notification />} />
-						<Route path="*" element={<NotFound />} />
-					</Routes>
-				</BrowserRouter>
-			</MenuContext.Provider>
+			<MenuProvider>
+				<AuthProvider>
+					<BrowserRouter>
+						<Routes>
+							<Route path="/" element={<App />} />
+							<Route path="account" element={<Account />} />
+							<Route path="interest" element={<Interest />} />
+							<Route
+								path="notification"
+								element={<Notification />}
+							/>
+							<Route path="/login" element={<Login />} />
+							<Route path="*" element={<NotFound />} />
+						</Routes>
+					</BrowserRouter>
+				</AuthProvider>
+			</MenuProvider>
 		</ChakraProvider>
 	</React.StrictMode>,
 	document.getElementById("root")

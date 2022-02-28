@@ -1,17 +1,17 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { Box, Icon, Avatar, AvatarBadge, Image } from "@chakra-ui/react";
+
 import AppWrapper from "../AppWrapper";
 
 import AppIcon from "../../theme/app-icon";
 
-import { useNavigate } from "react-router-dom";
-
-import { navTop } from "../../state/menu-context";
-
-import { Box, Icon, Avatar, AvatarBadge, Image } from "@chakra-ui/react";
+import MenuContext, { AppMenuType } from "../../state/menu-context";
 
 function AppHeader() {
-	const { 0: berandaMenu, 1: notificationMenu } = navTop;
-
 	let navigate = useNavigate();
+	const { menus } = useContext<AppMenuType>(MenuContext);
+	const { 0: berandaMenu, 1: notificationMenu } = menus.top;
 
 	const onClickNav = (url: string) => {
 		navigate(url);

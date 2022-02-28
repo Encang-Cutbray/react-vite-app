@@ -1,5 +1,5 @@
 {
-	"menu": {
+	"menus": {
 		"top": [
 			{ "url": "/", "name": "beranda", "icon": "MdOutlineHome" },
 			{

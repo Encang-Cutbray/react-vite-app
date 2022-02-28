@@ -1,12 +1,13 @@
 import { Box, Text } from "@chakra-ui/react";
 import { useContext } from "react";
-import AppAnimate from "../components/AppAnimate";
 
+import AppAnimate from "../components/AppAnimate";
 import { AppFooter, AppHeader, AppLayout } from "../components/layouts";
-import FooterMenuContext from "../state/menu-context";
+
+import MenuContext, { AppMenuType } from "../state/menu-context";
 
 function Interest() {
-	const footerMenu = useContext(FooterMenuContext);
+	const { menus } = useContext<AppMenuType>(MenuContext);
 
 	return (
 		<AppLayout>
@@ -17,7 +18,7 @@ function Interest() {
 				</Box>
 			</AppAnimate>
 
-			<AppFooter footerMenu={footerMenu} />
+			<AppFooter footerMenu={menus.bottom} />
 		</AppLayout>
 	);
 }

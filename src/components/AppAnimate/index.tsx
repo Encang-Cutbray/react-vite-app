@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { ScaleFade } from "@chakra-ui/react";
+import { Fade, ScaleFade, Box } from "@chakra-ui/react";
 
 type AppWrapperProps = {
 	children?: ReactNode;
@@ -8,9 +8,13 @@ type AppWrapperProps = {
 
 function AppAnimate({ children }: AppWrapperProps) {
 	return (
-		<ScaleFade initialScale={1.25} in={true}>
-			{children}
-		</ScaleFade>
+		<>
+			{/* <Fade in={true}>{children}</Fade> */}
+			{/* <ScaleFade initialScale={-4} in={true} >
+				{children}
+			</ScaleFade> */}
+			<Box>{children}</Box>
+		</>
 	);
 }
 

@@ -1,8 +1,29 @@
 import React from "react";
-import footerJson from "../data/footer.json";
+import menus from "../data/menus.json";
 
-const { menu: {top: navTop, bottom : navFooter} } = footerJson;
+export type MenuType = {
+	url: string;
+	name: string;
+	icon: string;
+};
+export type AppMenuType = {
+	menus: {
+		top: MenuType[];
+		bottom: MenuType[];
+	};
+};
 
-export default React.createContext(navFooter);
+const { menus: { top: navTop } } = menus;
 
-export { navFooter, navTop };
+const MenuContext = React.createContext<AppMenuType>(null!);
+
+export default MenuContext;
+
+const MenuProvider = ({ children }: { children: React.ReactNode }) => {
+	const appMenu = menus;
+	return (
+		<MenuContext.Provider value={appMenu}>{children}</MenuContext.Provider>
+	);
+};
+
+export { navTop, MenuProvider };
