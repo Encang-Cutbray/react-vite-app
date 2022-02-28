@@ -20,7 +20,13 @@ function AppHeader() {
 
 	return (
 		<AppWrapper>
-			<Box position="fixed" w="inherit" maxW="inherit" bg="white" zIndex={1}>
+			<Box
+				position="fixed"
+				w="inherit"
+				maxW="inherit"
+				bg="white"
+				zIndex={1}
+			>
 				<Box
 					display="flex"
 					justifyContent="space-between"
@@ -30,6 +36,7 @@ function AppHeader() {
 					py={3}
 					px={4}
 				>
+					<Box boxSize={6} />
 					<Box flex={1}>
 						<Box display="flex" justifyContent="center">
 							<AppLogo
@@ -42,8 +49,7 @@ function AppHeader() {
 						<Avatar
 							cursor="pointer"
 							onClick={() => onClickNav(notificationMenu.url)}
-							w={6}
-							h={6}
+							boxSize={6}
 							bg="transparent"
 							icon={
 								<Icon
