@@ -14,7 +14,15 @@ import { MenuProvider } from "./state/menu-context";
 import { AuthProvider } from "./state/auth-context";
 
 import AuthWrapper from "./components/AuthWrapper";
-import { Account, Interest, NotFound, Notification, Login, Registration } from "./pages";
+import {
+	Account,
+	Interest,
+	NotFound,
+	Notification,
+	Login,
+	Registration,
+} from "./pages";
+import GuestWrapper from "./components/GuestWrapper";
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -39,8 +47,13 @@ ReactDOM.render(
 										element={<Notification />}
 									/>
 								</Route>
-								<Route path="/login" element={<Login />} />
-								<Route path="/registration" element={<Registration />} />
+								<Route element={<GuestWrapper />}>
+									<Route path="/login" element={<Login />} />
+									<Route
+										path="/registration"
+										element={<Registration />}
+									/>
+								</Route>
 								<Route path="*" element={<NotFound />} />
 							</Routes>
 						</AuthProvider>

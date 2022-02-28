@@ -11,18 +11,16 @@ import {
 	Spacer,
 } from "@chakra-ui/react";
 
-import { ChangeEvent, useState, useEffect } from "react";
+import { ChangeEvent, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // Firebase
 import { authFirebase } from "../../libs/firebase-app";
-import {
-	useCreateUserWithEmailAndPassword,
-	useAuthState,
-} from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 import AppLogo from "../../components/AppLogo";
 import AppAnimate from "../../components/AppAnimate";
+import AppLoading from "../../components/AppLoading";
 import { AppHeaderSecondary, AppLayout } from "../../components/layouts";
 
 function Login() {
@@ -33,23 +31,12 @@ function Login() {
 	const [email, setEmail] = useState("user@mail.com");
 	const [password, setPassword] = useState("secret");
 
-	const [userAuth, loadingAuth, errorAuth] = useAuthState(authFirebase);
-
 	const [
 		createUserWithEmailAndPassword,
 		userSign,
 		loadingSign,
 		errorSign,
 	] = useCreateUserWithEmailAndPassword(authFirebase);
-
-	useEffect(() => {
-		if (userAuth) {
-			navigate(from, { replace: true });
-		}
-		return () => {
-			userAuth;
-		};
-	}, [userAuth]);
 
 	if (userSign) {
 		navigate(from, { replace: true });
@@ -66,8 +53,8 @@ function Login() {
 	const handleSignIn = async () => {
 		await createUserWithEmailAndPassword(email, password);
 	};
-	if (loadingAuth || loadingSign) {
-		return <Box>Loading</Box>;
+	if (loadingSign) {
+		return <AppLoading />;
 	}
 	return (
 		<AppLayout>

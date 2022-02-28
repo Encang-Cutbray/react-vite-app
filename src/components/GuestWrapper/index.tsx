@@ -1,14 +1,12 @@
 import { useEffect } from "react";
 
+import { Navigate, Outlet } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 import AppLoading from "../AppLoading";
 import { authFirebase } from "../../libs/firebase-app";
 
-function AuthWrapper() {
-	let location = useLocation();
-
+function GuestWrapper() {
 	const [userAuth, loadingAuth, errorAuth] = useAuthState(authFirebase);
 	useEffect(() => {
 		return () => {
@@ -19,14 +17,11 @@ function AuthWrapper() {
 	if (loadingAuth) {
 		return <AppLoading/>;
 	}
-	if (!userAuth || errorAuth) {
-		return <Navigate to="/login" state={{ from: location }} replace />;
+	if (userAuth) {
+		return <Navigate to="/" replace />;
 	}
 
-	if (userAuth && !loadingAuth) {
-		console.log(userAuth);
-	}
 	return <Outlet />;
 }
 
-export default AuthWrapper;
+export default GuestWrapper;
