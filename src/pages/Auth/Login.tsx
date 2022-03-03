@@ -27,7 +27,6 @@ import { AppHeaderSecondary, AppLayout } from "../../components/layouts";
 function Login() {
 	let { state }: any = useLocation();
 	const title = "Login";
-	const from = state?.from ?? "/";
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("user@mail.com");
 	const [password, setPassword] = useState("secret");
@@ -38,10 +37,6 @@ function Login() {
 		loadingSign,
 		errorSign,
 	] = useSignInWithEmailAndPassword(authFirebase);
-
-	if (userSign) {
-		navigate(from, { replace: true });
-	}
 
 	const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target.name == "email") {
@@ -126,6 +121,13 @@ function Login() {
 									}
 								>
 									Registration
+								</Link>
+								<Link
+									fontSize="sm"
+									textAlign="right"
+									onClick={() => navigate("/")}
+								>
+									Beranda
 								</Link>
 							</Flex>
 						</Stack>

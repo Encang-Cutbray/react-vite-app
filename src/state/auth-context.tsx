@@ -3,7 +3,7 @@ import React from "react";
 /**
  * Context React Hook
  */
-type AuthContextType = {
+export type AuthContextType = {
 	user: any;
 	signin: (user: string, callback: VoidFunction) => void;
 	signout: (callback: VoidFunction) => void;
