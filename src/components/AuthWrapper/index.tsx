@@ -1,4 +1,3 @@
-
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
@@ -11,10 +10,9 @@ function AuthWrapper() {
 	let location = useLocation();
 	let auth = useAuth();
 
-	const [userAuth, loadingAuth, errorAuth] = useAuthState(authFirebase, {onUserChanged: async (user : User | null) => {
-		console.log(user?.uid);
-		
-	}});
+	const [userAuth, loadingAuth, errorAuth] = useAuthState(authFirebase, {
+		onUserChanged: async (user: User | null) => {},
+	});
 
 	if (loadingAuth) {
 		return <AppLoading />;
@@ -23,10 +21,8 @@ function AuthWrapper() {
 		return <Navigate to="/login" state={{ from: location }} replace />;
 	}
 
-	if (userAuth && !loadingAuth) {		
+	if (userAuth && !loadingAuth) {
 		let userEmail: string = userAuth.email as string;
-		console.log(userAuth.toJSON());
-		
 		auth.signin(userEmail, () => {});
 	}
 	return <Outlet />;
