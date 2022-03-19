@@ -13,8 +13,21 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
+	superLargeDesktop: {
+		// the naming can be any, depends on you.
+		breakpoint: { max: 4000, min: 3000 },
+		items: 1,
+	},
 	desktop: {
 		breakpoint: { max: 3000, min: 464 },
+		items: 1,
+	},
+	tablet: {
+		breakpoint: { max: 1024, min: 464 },
+		items: 1,
+	},
+	mobile: {
+		breakpoint: { max: 464, min: 0 },
 		items: 1,
 	},
 };
@@ -29,14 +42,12 @@ function AppCarousel() {
 						mx={2}
 						p={2}
 						rounded="md"
-						shadow="md"
+						shadow="sm"
 						mt={3}
 						key={index}
 					>
 						<Stat>
-							<StatLabel textAlign="center">
-								Account {index + 1}
-							</StatLabel>
+							<StatLabel textAlign="center">Account {index + 1}</StatLabel>
 							<StatLabel>Collected Fees</StatLabel>
 							<Flex>
 								<StatNumber fontSize="md">£0.00</StatNumber>
