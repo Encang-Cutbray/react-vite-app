@@ -23,6 +23,7 @@ import {
 	Registration,
 } from "./pages";
 import GuestWrapper from "./components/GuestWrapper";
+import Cammera from "./pages/Cammera";
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -45,6 +46,10 @@ ReactDOM.render(
 									<Route
 										path="notification"
 										element={<Notification />}
+									/>
+									<Route
+										path="/camera"
+										element={<Cammera />}
 									/>
 								</Route>
 								<Route element={<GuestWrapper />}>

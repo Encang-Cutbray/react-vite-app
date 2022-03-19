@@ -3,7 +3,8 @@ import {
 	MdOutlineOutbox,
 	MdPersonOutline,
 	MdNotifications,
-	MdArrowBack
+	MdArrowBack,
+	MdCameraEnhance,
 } from "react-icons/md";
 
 import AppLogo from "../styles/favicon.svg";
@@ -20,6 +21,7 @@ const AppIcon = {
 	MdPersonOutline,
 	MdNotifications,
 	MdArrowBack,
+	MdCameraEnhance,
 	AppLogo,
 } as AppIconType;
 
